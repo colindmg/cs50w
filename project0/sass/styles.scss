@@ -1,0 +1,130 @@
+
+$light-blue: #4285f4;
+$dark-blue: #17438a;
+$light-gray: #EEE;
+$dark-gray: #DDD;
+$white: #FFF;
+$black: #232323;
+
+$font-family: Arial, sans-serif;
+
+@mixin flex($direction : row, $justify : flex-start, $align : flex-start) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+/* ----------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    @include flex(column, center);
+    height: 100vh;
+}
+
+/* NAVIGATION BAR */
+
+nav {
+    @include flex(row, space-between, center);
+    width: 100%;
+    height: 60px;
+    background-color: $white;
+    border-bottom: 1px solid $dark-gray;
+    padding: 10px 5% ;
+
+    img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    a{
+        margin: 0;
+        font-size: 16px;
+    }
+}
+
+.nav-links a {
+    margin-left: 20px;
+    color: $light-blue;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: $dark-blue;
+}
+
+/* ----------------------------- */
+
+/* MAIN CONTENT */
+
+.google-search{
+    @include flex(column, center, center);
+    width: 100%;
+    height: 100vh;
+
+    img{
+        width: 250px;
+        margin-bottom: 10px;
+    }
+
+    form {
+        @include flex(column, center, center);
+    }
+    
+}
+
+input{
+    font-size: 17px;
+
+    &[type="text"] {
+        margin-bottom: 10px;
+        width: 400px;
+        padding: 10px;
+        padding-left: 20px;
+        border: 1px solid $dark-gray;
+        border-radius: 100px;
+        color: $black;
+    }
+
+    &[type="text"]:focus {
+        box-shadow: 0 2 2 2px $black;
+        background-color: $light-gray;
+        outline: none;
+    }
+
+    &[type="text"]:hover {
+        background-color: $light-gray;
+        outline: none;
+    }
+
+    &[type="submit"], &[type="button"] {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: $light-blue;
+        color: $white;
+        cursor: pointer;
+        font-size: 14px;
+    }
+}
+
+.form-buttons {
+    input{
+        margin-right: 10px;
+    }
+
+    input:hover{
+        background-color: $dark-blue;
+    }
+}
