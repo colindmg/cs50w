@@ -1,38 +1,14 @@
-body {
-    margin: 0;
-    background-color: white;
+
+nav a{
+    transition: 0.2s;
 }
 
-code {
-    white-space: pre;
+nav a:hover{
+    color: #787878;
 }
 
-h1 {
-    margin-top: 0px;
-    padding-top: 20px;
-}
-
-textarea {
-    height: 90vh;
-    width: 80%;
-}
-
-.main {
-    padding: 10px;
-}
-
-.search {
-    width: 100%;
-    font-size: 15px;
-    line-height: 15px;
-}
-
-.sidebar {
-    background-color: #f0f0f0;
-    height: 100vh;
-    padding: 20px;
-}
-
-.sidebar h2 {
-    margin-top: 5px;
+@media (max-width: 991px) {
+    .sidebar {
+        height: fit-content;
+    }
 }

@@ -13,10 +13,16 @@ def index(request):
     })
 
 def entry(request, title):
-    return render(request, "encyclopedia/entry.html", {
-        "entry": markdown2.markdown(util.get_entry(title)),
-        "title": title
-    })
+    if title not in util.list_entries():
+        return render(request, "encyclopedia/entry.html", {
+            "title": title,
+            "entry": None
+        })
+    else:
+        return render(request, "encyclopedia/entry.html", {
+            "entry": markdown2.markdown(util.get_entry(title)),
+            "title": title
+        })
 
 def search(request):
     query = request.GET.get('q', '')
@@ -34,7 +40,7 @@ def create(request):
     if request.method == "POST":
         title = request.POST.get('title')
         content = request.POST.get('content')
-        if title in util.list_entries():
+        if util.get_entry(title) != None:
             return render(request, "encyclopedia/create.html", {
                 "error": "An entry with this title already exists.",
                 "title": title,

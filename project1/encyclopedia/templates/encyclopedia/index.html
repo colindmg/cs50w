@@ -5,12 +5,12 @@
 {% endblock %}
 
 {% block body %}
-    <h1>All Pages</h1>
-
-    <ul>
-        {% for entry in entries %}
-            <li><a href="{% url 'encyclopedia:entry' entry %}">{{ entry }}</a></li>
-        {% endfor %}
-    </ul>
-
+    <div class="container mt-4">
+        <h1>All Pages</h1>
+        <div class="list-group mt-3">
+            {% for entry in entries %}
+                <a href="{% url 'encyclopedia:entry' entry %}" class="list-group-item list-group-item-action">{{ entry }}</a>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

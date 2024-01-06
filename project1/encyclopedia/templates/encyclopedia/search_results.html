@@ -1,10 +1,22 @@
 {% extends "encyclopedia/layout.html" %}
 
-{% block body %}
-    <h1>Search Results for "{{ search_query }}"</h1>
-    <ul>
-        {% for entry in entries %}
-            <li><a href="{% url 'encyclopedia:entry' entry %}">{{ entry }}</a></li>
-        {% endfor %}
-    </ul>
+{% block title %}
+    Search Results - Encyclopedia
 {% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Search Results for "{{ search_query }}"</h1>
+        <div class="list-group mt-3">
+            {% for entry in entries %}
+                <a href="{% url 'encyclopedia:entry' entry %}" class="list-group-item list-group-item-action">{{ entry }}</a>
+            {% endfor %}
+        </div>
+        {% if entries|length == 0 %}
+            <div class="alert alert-info mt-3" role="alert">
+                No entries found matching your query.
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+

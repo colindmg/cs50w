@@ -10,12 +10,20 @@
 {% endblock %}
 
 {% block body %}
-    {% if entry %}
-        <div>
-            <a href="{% url 'encyclopedia:edit' title %}">Edit this page</a>
-        </div>
-        {{ entry|safe }}
-    {% else %}
-        <h1>Page not found</h1>
-    {% endif %}
+    <div class="container mt-4">
+        {% if entry %}
+            <div class="d-flex justify-content mb-3">
+                <a href="{% url 'encyclopedia:edit' title %}" class="btn btn-primary">Edit this page</a>
+            </div>
+            <div class="entry-content">
+                {{ entry|safe }}
+            </div>
+        {% else %}
+            <h1>Page not found</h1>
+            <div class="mt-3">
+                <a href="{% url 'encyclopedia:index' %}" class="btn btn-secondary">Back to home</a>
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}
+
